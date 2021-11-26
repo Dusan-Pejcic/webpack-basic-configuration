@@ -1,9 +1,10 @@
-// IMPORTANT !!! down in the BrowserSyncPlugin plugin options, change proxy to match your local site host
+// IMPORTANT !!! down in the BrowserSyncPlugin plugin options, change proxy to match your local site host (where the site is served with npm run start)
 // then when you do: npm run watch, the new localhost:3000 window will open with live reload as you save files.
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 const path = require('path'); 
@@ -57,9 +58,10 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin(),
     new BrowserSyncPlugin({ // used to watch files
       files: '**/*', // watches all files
-      proxy: 'https://moj-webdev-portfolio.local/' // change proxy to fit your local site hoast
+      proxy: 'http://localhost:8080/' // change proxy to fit your local site hoast
     })
   ],
 };
