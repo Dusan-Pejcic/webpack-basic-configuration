@@ -58,7 +58,9 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./src/template.html" // uses this file and inserts script tags and style sheets
+    }),
     new BrowserSyncPlugin({ // used to watch files
       files: '**/*', // watches all files
       proxy: 'http://localhost:8080/' // change proxy to fit your local site hoast
